@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+const user1 = {
+    name:"흥선대원군",
+    age:65,
+    phone:"010-9999-9999",
+    email:"heung.com"
+}
+const user2 = {
+    name:"고종",
+    age:45,
+    phone:"010-8888-8888",
+    email:"Ko.com"
+}
+const user3 = {
+    name:"명성황후",
+    age:35,
+    phone:"010-7777-7777",
+    email:"menung.com"
+}
+
+function NameCard({name}){
+    return <h1 style={{backgroundColor:"red",color:"blue"}}>{name}</h1>
+}
+function AgeCard({age}){
+    return <h1 style={{backgroundColor:"lightblue",color:"black"}}>{age}</h1>
+}
+function PhoneCard({phone}){
+    return <h1 style={{backgroundColor:"yellow",color:"purple"}}>{phone}</h1>
+}
+function EmailCard({email}){
+    return <h1 style={{backgroundColor:"green",color:"orange"}}>{email}</h1>
+}
+function UserInfo({user}){
+    return <div style={{border:"solid 1px yellow"}}>
+        <NameCard name={user.name}/>
+        <AgeCard age={user.age}/>
+        <PhoneCard phone={user.phone}/>
+        <EmailCard email={user.email}/>
+    </div>
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render([
+    <UserInfo user={user1}/>,
+    <UserInfo user={user2}/>,
+    <UserInfo user={user3}/>
+]);
+
+
+
+
+</script>
+</html>

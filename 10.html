@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+const user = {
+  name : "고동환",
+  age : 27,
+  phone : "01054792361",
+  email : "eurdream98@naver.com"
+}
+
+function NameCard(){
+  return <h1>{user.name}</h1>
+}
+function AgeCard(){
+  return <h1>{user.age}</h1>
+}function PhoneCard(){
+  return <h1>{user.phone}</h1>
+}
+function EmailCard(){
+  return <h1>{user.email}</h1>
+}
+
+function UserInfo(){
+  return <div>
+    <NameCard/>
+    <AgeCard/>
+    <PhoneCard/>
+    <EmailCard/>
+  </div>
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<UserInfo/>);
+</script>
+</html>

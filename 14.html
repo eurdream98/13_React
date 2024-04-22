@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    function PropertyTypes({name,age,children}){
+        return <>
+        <h1>속성 다양한 타입</h1>
+            <h1>이름</h1>
+            <h1>{name}</h1>
+            <h1>나이</h1>
+            <h1>{age}</h1>
+            <h1>자식</h1>
+            <h1>{children}</h1>
+        </>
+    }
+    PropertyTypes.prototype = {
+        name:PropertyTypes.string,
+        // age : PropertyTypes.number.isRequired
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render([<PropertyTypes name="강민철" age={26}>아이아이</PropertyTypes>,<PropertyTypes name={3}></PropertyTypes>]);
+</script>
+</html>

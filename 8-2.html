@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+  let el;
+  const answer = parseInt(prompt("리액트가 재밌나요? \n1. 네 재밌어요! \n 2. 아직 어려워요 ㅠㅠ"));
+  if(answer === 1){
+    el=<h1>재밌다니 다행이네용</h1>
+  }else{
+    el=<h1>힘드시구나ㅠㅠ</h1>
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(el);
+</script>
+</html>
