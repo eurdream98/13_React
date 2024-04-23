@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+
+  function UsingEvent({alertSuccess}){
+    return (
+            <>
+              <button onClick={alertSuccess}>부자 버튼</button>
+            </>
+    )
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<UsingEvent alertSuccess={() => alert("부자가 되는 버튼입니다.")}/>);
+</script>
+</html>

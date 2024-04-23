@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    class UsingState extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {
+                number:0,
+                test:'hello'
+            }
+        }
+
+
+
+        render(){
+            const {number} = this.state;
+            return (
+                <>
+                    <h1>Count {number}</h1>
+                    <button onClick={() => {
+                        this.setState({number : number-1});
+                    }}>-1</button>
+                    <button onClick={() =>{
+                        this.setState({number : number+1});
+                    }}>+1</button>
+                </>
+            );
+        }
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<UsingState/>);
+</script>
+</html>

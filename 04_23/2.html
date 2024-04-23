@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+
+
+  class UsingClass extends React.Component{
+    state = {
+      isOff:false
+    }
+
+
+    render(){
+      const {isOff} = this.state;
+      const style = {
+        width:200,
+        height:200,
+        backgroundColor: isOff ? 'yellow':'purple',
+        transition:'2s'
+      }
+      return (
+              <>
+              <div style={style}>
+                {isOff?"노란색":"보라색"}
+              </div>
+                <button onClick={() =>{ this.setState({isOff:!isOff});isOff? console.log('불이 꺼졌습니다.'):console.log('불이 켜졌습니다.')}}>{isOff?"off":"on"}</button>
+              </>
+
+      )
+    }
+
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<UsingClass/>);
+</script>
+</html>

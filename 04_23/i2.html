@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+
+  const {useState} = React;
+
+  function UsingIterator(){
+    const [names,setNames] = useState(
+            [{id:1,name:'이순신'},
+              {id:2,name:'유관순'},
+              {id:3,name:'세종대왕'},
+              {id:4,name:'임꺽정'}]
+    );
+
+
+    const [nextId,setNextId] = useState(5);
+    const [inputText,setInputText] = useState('');
+
+    const clickHandler = () => {
+      const changedNames = names.concat(
+              {
+                id:nextId,
+                name:inputText
+              }
+      );
+      setNextId(nextId+1);
+      setInputText('');
+      setNames(changedNames);
+    }
+    const remove = id =>{
+      const changedNames = names.filter(item => item.id !== id);
+      setNames(changedNames);
+    }
+    const nameList = names.map(item => <li key={item.id}  onDoubleClick={() => remove(item.id)}>{item.name}</li>)
+    return(
+            <>
+              <input type="text"
+                     placeholder="위인을 입력해주세요"
+                     onChange={
+                       (e) => setInputText(e.target.value)
+                     }
+                    value = {inputText}
+              />
+              <button onClick={clickHandler}>제출</button>
+              <ul>
+                {nameList}
+              </ul>
+            </>
+    )
+  }
+ReactDOM.createRoot(document.getElementById("root")).render(<UsingIterator/>);
+</script>
+</html>
