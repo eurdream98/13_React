@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+class RemoveTest extends React.Component{
+  componentWillUnmount(){
+    console.log('componentWillUnmount...');
+  }
+  render(){
+    console.log(`render...`)
+    return(
+            <>
+              <h1>hello world 5초 뒤 사라짐!</h1>
+            </>
+    )
+  }
+}
+
+const compo = ReactDOM.createRoot(document.getElementById("root"));
+compo.render(<RemoveTest/>);
+setTimeout(() => compo.render(null),5000);
+</script>
+</html>

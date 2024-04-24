@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+  const {useReducer} = React;
+  function UseReducer(){
+    const reducer = (state,action) =>{
+      console.log(state);
+      console.log(action);
+      return {
+        ...state,
+        [action.name] : action.value
+      }
+    }
+
+    const [state,dispatcher] = useReducer(
+            reducer,{username:'',password:''}
+    );
+
+    return(<>
+            <h1>로그인 폼</h1>
+              <label>username</label>
+              <input
+                type="text"
+                name="username"
+                value={state.username}
+              onChange={(e) =>{dispatcher(e.target)}}/>
+              <label>nickname</label>
+              <input
+                      type="text"
+              name="password"
+                      value={state.password}
+                      onChange={(e) =>{dispatcher(e.target)}}/>
+          </>
+      )
+  }
+ReactDOM.createRoot(document.getElementById("root")).render(<UseReducer/>);
+</script>
+</html>

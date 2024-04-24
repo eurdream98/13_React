@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel">
+    class UpdateLifeCycle extends React.Component{
+        state = {
+            text:'',
+            time: new Date().toLocaleTimeString()
+        }
+
+
+
+        static getDerivedStateFromProps(props,state){
+            console.log(`getDerivedStateFromProps...`);
+            console.log(props);
+            console.log(state);
+            if(state.text!==props.text){
+                return {text:props.text}
+            }
+            console.log(props);
+            console.log(state);
+            return null;
+        }
+        shouldComponentUpdate(props,state){
+            console.log(props);
+            console.log(state);
+            console.log('shouldComponentUpdate..');
+            return true;
+        }
+        render(){
+            console.log(`render...`)
+            return(
+                <>
+                    <h1>{this.state.text}의 시계 : 현재 시간</h1>
+                    <h1>{this.state.time}</h1>
+                    <button onClick={() => this.setState({ time : new Date().toLocaleTimeString() })}>현재 시각 버튼</button>
+                </>
+            )
+        }
+        getSnapshotBeforeUpdate(props,state){
+            console.log(props);
+            console.log(state);
+            console.log(`getSnapshotBeforeUpdate...`);
+            return {
+                text:''
+            };
+        }
+        componentDidMount(props,state,snapshot){
+            console.log(props);
+            console.log(state);
+            console.log(snapshot);
+            console.log(`componentDidMount`)
+        }
+    }
+ReactDOM.createRoot(document.getElementById("root")).render(<UpdateLifeCycle text="고동환"/>);
+</script>
+</html>

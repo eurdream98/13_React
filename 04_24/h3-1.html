@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_hard-calculator</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState} = React;
+ function App(){
+   const [hardNumber,setHardNumber] = useState(1);
+   const [easyNumber,setEasyNumber] = useState(1);
+   const hardCalculator = (hardNumber) =>{
+     console.log('어려운 계산')
+      setHardNumber(hardNumber+100000);
+   }
+   const easyCalculator = (easyNumber) =>{
+     console.log('쉬운 계산')
+     setEasyNumber(easyNumber+1);
+   }
+   return (
+           <>
+             <h1>어려운 계산</h1>
+             <input
+               type="number"
+               value={hardNumber}
+               onChange={(e) => hardCalculator(parseInt(e.target.value))}
+               />
+             <span>{hardNumber}</span>
+             <h1>쉬운 계산</h1>
+             <input
+                     type="number"
+                     value={easyNumber}
+                     onChange={(e) => easyCalculator(parseInt(e.target.value))}
+             />
+             <span>{easyNumber}</span>
+           </>
+   )
+ }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+</body>
+</html>
+
+
